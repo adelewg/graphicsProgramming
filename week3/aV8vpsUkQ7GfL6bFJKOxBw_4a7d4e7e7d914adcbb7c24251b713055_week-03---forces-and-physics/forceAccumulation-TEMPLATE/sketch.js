@@ -13,12 +13,16 @@ function setup() {
 ///////////////////////////////////////////////
 function draw() {
   background(0);
-    var mouse = createVector(mouseX, mouseY);
-    var dir = p5.Vector.sub(mouse, ball.location);
-    dir.normalize();
-    //we make is small because acceleration needs to be very small
-    dir.mult(0.3);
-    ball.applyForce(dir);
+    
+    var gravity = createVector(0, 0.1);
+    ball.applyForce(gravity);
+    
+    //the friction acts in the opposite direction to the velocity
+    var friction = ball.velocity.copy();
+    friction.mult(-1);
+    friction.normalize();
+    friction.mult(0.01);
+    ball.applyForce(friction);
     
   ball.run();
 }
