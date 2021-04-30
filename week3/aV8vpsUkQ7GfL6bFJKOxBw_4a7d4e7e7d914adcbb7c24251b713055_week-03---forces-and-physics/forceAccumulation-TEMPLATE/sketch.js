@@ -4,7 +4,8 @@
 // Adapted from https://github.com/nature-of-code/
 // released under MIT license
 
-var ball;
+//var ball;
+var balls = [];
 ///////////////////////////////////////////////
 function setup() {
   createCanvas(900,600);
@@ -14,26 +15,37 @@ function setup() {
 function draw() {
   background(0);
     
-    var gravity = createVector(0, 0.1);
-    ball.applyForce(gravity);
     
-    //the friction acts in the opposite direction to the velocity
-    var friction = ball.velocity.copy();
-    friction.mult(-1);
-    friction.normalize();
-    friction.mult(0.01);
-    ball.applyForce(friction);
+    for(i=0; i < balls.length; i++)
+        {
+            var gravity = createVector(0, 0.1);
+            balls[i].applyForce(gravity);
     
-  ball.run();
+            //the friction acts in the opposite direction to the velocity
+            var friction = balls[i].velocity.copy();
+            friction.mult(-1);
+            friction.normalize();
+            friction.mult(0.01);
+            balls[i].applyForce(friction);
+    
+            balls[i].run();
+        }
+    
+  
+}
+
+function mouseDragged() {
+    
+    balls.push(new Ball(mouseX, mouseY));
 }
 ///////////////////////////////////////////////
 class Ball {
 
-  constructor(){
-    this.velocity = new createVector(0, 0);
-    this.location = new createVector(width/2, height/2);
+  constructor(x, y){
+    this.velocity = new createVector(random(-3, 3), random(-3, 3));
+    this.location = new createVector(x, y);
     this.acceleration = new createVector(0, 0);
-    this.size = 40;
+    this.size = random(10,40);
   }
 
   run(){
