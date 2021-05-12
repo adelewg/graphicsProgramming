@@ -43,6 +43,13 @@ function draw() {
     for(var i = 0; i < boxes.length; i++)
         {
             drawVertices(boxes[i].vertices);
+            if(isOffScreen(boxes[i]))
+                {
+                    World.remove(engine.world, boxes[i]);
+                    boxes.splice(i, 1);
+                    //the reason we go back and index is because of the way that the splice function works - it will skip an index if we do not check that index number again
+                    i--;
+                }
         }
    
     
@@ -57,6 +64,14 @@ function generateObjects(x, y) {
     var b = Bodies.rectangle(x, y, random(10,30), random(10,30), {restitution: 0.8, friction: 0.5});
     boxes.push(b);
     World.add(engine.world, [b]);
+}
+
+
+//we need this function so that we can remove bodies that are not in the screen so that our graphics are fast and crisp
+function isOffScreen(body){
+    var pos = body.position;
+    return(pos.y > height || pos.x < 0 || pos.x > width);
+    
 }
 
 function drawVertices(vertices)
