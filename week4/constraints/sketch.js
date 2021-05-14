@@ -6,6 +6,8 @@ var Bodies = Matter.Bodies;
 var Composite = Matter.Composite;
 var World = Matter.World;
 var Constraint = Matter.Constraint;
+var MouseContstraint = Matter.MouseConstraint;
+var Mouse = Matter.Mouse;
 
 var engine;
 var ground;
@@ -19,10 +21,12 @@ var constraint2;
 var poly3;
 var constraint3;
 
+var canvas;
+
 
 
 function setup() {
-    createCanvas(900, 600);
+    var canvas = createCanvas(900, 600);
     
     //create an engine
     engine = Engine.create();
@@ -62,6 +66,16 @@ function setup() {
     
     //add all of the bodies to the world
     World.add(engine.world, [ground, poly1A, poly1B, constraint1, poly2, constraint2, poly3, constraint3]);
+    
+    var mouse = Mouse.create(canvas.elt);
+    var mouseParams = {
+        mouse: mouse
+            
+    }
+    
+    var mouseConstraint = MouseContstraint.create(engine, mouseParams);
+    mouseConstraint.mouse.pixelRatio = pixelDensity();
+    World.add(engine.world, mouseConstraint);
 
 }
 
