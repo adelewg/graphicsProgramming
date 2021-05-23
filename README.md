@@ -12,7 +12,7 @@ A vector has both direction and magnitude.
 There is also another technique called static addition where you can add two vectos together without changing them. An example of this would be: v3 = p5.Vector.add( v1, v2 )     
 v1 and v2 remain unchanged and we store the result of the addition in a new vector called v3.
 
-**Physics Engine**
+**Physics Engine**      
 We shall use matter.js as the physics engine.   
 
 **Generative Art and Design**      
@@ -23,7 +23,13 @@ There is a randomSeed() function in p5.js and an example of this would be random
 It is another way to generate random numbers that are more realistic for certain situations. It was initially developed by a computer scientist called Ken Perlin.
 Its referred to as noise which is different from randomness.       
 noise()    
+noise is from 0 to 1 and thats why we have to map it to an appropriate range.
+noiseSeed()
 Perlin noise allows for a more organic appearance as it produces a naturally ordered sequence of pseudorandom numbers. Random doesn’t care about it’s history, it is like throwing the dice every time.
+
+2D Noise     
+We pass two parameters to the noise function
+
 
 
 
