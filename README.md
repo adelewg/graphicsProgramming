@@ -25,10 +25,14 @@ Its referred to as noise which is different from randomness.
 noise()    
 noise is from 0 to 1 and thats why we have to map it to an appropriate range.
 noiseSeed()
+noiseDetail() allows you to create more or less detail in the resulting noise.       
 Perlin noise allows for a more organic appearance as it produces a naturally ordered sequence of pseudorandom numbers. Random doesn’t care about it’s history, it is like throwing the dice every time.
 
 2D Noise     
 We pass two parameters to the noise function
+
+3D Noise      
+We pass three parameters to the noise function. Used for 3D terrain generation.
 
 
 
