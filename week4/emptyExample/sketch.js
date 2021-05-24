@@ -3,14 +3,18 @@ var Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
     Bodies = Matter.Bodies,
-    Composite = Matter.Composite;
-    World = Matter.World;
+    Composite = Matter.Composite,
+    World = Matter.World,
+    Body = Matter.Body;
 
 var engine;
 var box1;
 var ground1, ground2;
 var circle, polygon;
 var boxes = [];
+var propeller;
+var angle = 0;
+var angleSpeed = 0.1;
 
 
 function setup() {
@@ -23,11 +27,11 @@ function setup() {
     
     
    
-    ground1 = Bodies.rectangle(100, 200, 500, 10, {isStatic: true, angle: Math.PI * 0.06});
-    ground2 = Bodies.rectangle(400, 500, 500, 10, {isStatic: true, angle: Math.PI * -0.06});
-    
+    ground = Bodies.rectangle(400, 500, 500, 10, {isStatic: true, angle: Math.PI * -0.06});
+    //ground2 = Bodies.rectangle(400, 500, 500, 10, {isStatic: true, angle: Math.PI * -0.06});
+    propeller = Bodies.rectangle(width/2, height/2, 300, 15, {isStatic: true, angle: angle});
     //add all of the bodies to the world
-    World.add(engine.world, [box1, ground1, ground2]);
+    World.add(engine.world, [box1, ground, propeller]);
 
 }
 
@@ -37,8 +41,13 @@ function draw() {
     
     fill(255);
     drawVertices(box1.vertices);
+    drawVertices(propeller.vertices);
     
-    generateObjects(width/2, 0);
+    Body.setAngle(propeller, angle);
+    Body.setAngularVelocity(propeller, angleSpeed);
+    angle += angleSpeed;
+    
+    if (random(1) < 0.2) generateObjects(width/2, 0);
     
     for(var i = 0; i < boxes.length; i++)
         {
@@ -54,8 +63,8 @@ function draw() {
    
     
     fill(125);
-    drawVertices(ground1.vertices);
-    drawVertices(ground2.vertices);
+    drawVertices(ground.vertices);
+    //drawVertices(ground2.vertices);
   
 
 }

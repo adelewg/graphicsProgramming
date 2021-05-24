@@ -74,6 +74,8 @@ function setup() {
     }
     
     var mouseConstraint = MouseContstraint.create(engine, mouseParams);
+    
+    // this line of code gets it to work on my high definitions screen
     mouseConstraint.mouse.pixelRatio = pixelDensity();
     World.add(engine.world, mouseConstraint);
 
