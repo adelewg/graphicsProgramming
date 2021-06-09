@@ -34,6 +34,8 @@ We pass two parameters to the noise function
 3D Noise      
 We pass three parameters to the noise function. Used for 3D terrain generation.
 
+Fractals     
+For example the "Sierpinski carpet" whose construction begins with a square. The square is cut into nine congruent sub squares in a three-by-three grid, and the central subsquare is removed. The same procedure is then applied recursively to the remaining aid subsquares forever. The technique of subdividing a shape into smaller copies of itself, removing one or more copies and continuing recursively can be extended to other shapes as well. 
 
 
 
