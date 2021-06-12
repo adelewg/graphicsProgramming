@@ -9,7 +9,7 @@ A vector has both direction and magnitude.
 .sub().   
 .mult().   
 .div().   
-There is also another technique called static addition where you can add two vectos together without changing them. An example of this would be: v3 = p5.Vector.add( v1, v2 )     
+There is also another technique called static addition where you can add two vectors together without changing them. An example of this would be: v3 = p5.Vector.add( v1, v2 )     
 v1 and v2 remain unchanged and we store the result of the addition in a new vector called v3.
 
 **Physics Engine**      
